@@ -189,7 +189,7 @@ pub trait Idx: Copy + 'static + Ord + Debug + Hash {
 /// A macro equivalent to the stdlib's `vec![]`, but producing an `IndexVec`.
 #[macro_export]
 macro_rules! index_vec {
-    ($($tokens:tt)*) => {
+    [$($tokens:tt)*] => {
         $crate::IndexVec::from_vec(vec![$($tokens)*])
     }
 }
@@ -198,7 +198,7 @@ macro_rules! index_vec {
 /// `Box<IndexSlice<I, [T]>>` (That is, an `IndexBox<I, [T]>`).
 #[macro_export]
 macro_rules! index_box {
-    ($($tokens:tt)*) => {
+    [$($tokens:tt)*] => {
         $crate::IndexVec::from_vec(vec![$($tokens)*]).into_boxed_slice()
     }
 }
