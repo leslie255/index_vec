@@ -37,6 +37,9 @@ use super::*;
 #[derive(Copy, Clone)]
 #[repr(transparent)]
 pub struct IndexSlice<I: Idx, T: ?Sized> {
+    /// Disable auto [`Send`] impl.
+    /// See [https://github.com/rust-lang/rust/issues/93367].
+    _unsend_marker: PhantomData<*const ()>,
     _marker: PhantomData<fn(&I)>,
     pub raw: T,
 }
